@@ -1,4 +1,4 @@
-/* Fetch ticket asynchronous function */
+/* Fetch tickets asynchronous function */
 
 async function fetchTickets() {
     // Assign the ticket container div and error message paragraph to a variable
@@ -28,4 +28,27 @@ async function fetchTickets() {
     }
 }
 
+/* Display tickets function */
+
+function displayTickets(tickets) {
+    const ticketContainer = document.getElementById("ticket-container");
+    ticketContainer.innerHTML = "";
+
+    // Loop through each ticket and display them
+    tickets.forEach((ticket) => {
+        const ticketElement = document.createElement("div");
+        ticketElement.className = "ticket";
+
+        ticketElement.innerHTML = `
+            <p><strong>Ticket ID:</strong> ${ticket.id}</p>
+            <p><strong>Customer Name:</strong> User ${ticket.userId}</p>
+            <p><strong>Issue Description:</strong> ${ticket.title}</p>
+            <p><strong>Details:</strong> ${ticket.body}</p>
+        `;
+
+        ticketContainer.appendChild(ticketElement);
+    });
+}
+
+// Initialize ticket fetching
 fetchTickets();
