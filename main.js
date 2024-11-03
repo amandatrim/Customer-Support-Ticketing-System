@@ -22,9 +22,17 @@ async function fetchTickets() {
         displayTickets(tickets);
 
         // Display an error if the api request is not successfull
-    } catch (error) {
+    } 
+    catch (error) {
         errorMessage.textContent = error.message;
         errorMessage.classList.remove("hidden");
+    }
+    finally {
+        // Hide loading indicator if present
+        const loadingIndicator = document.getElementById('loading-indicator');
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'none';
+        }
     }
 }
 
